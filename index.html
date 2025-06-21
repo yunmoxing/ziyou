@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉字挑战</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 游戏开始菜单 -->
+    <div class="menu-container" id="menu-container">
+        <div class="menu-panel">
+            <div class="theme-icon" id="theme-icon">☀️</div>
+            <h1>汉字挑战</h1>
+            <div class="settings-icon" id="settings-icon">⚙️</div>
+            <p class="menu-intro">选择一个模式，考验你的眼力和知识储备！</p>
+            <div class="menu-buttons">
+                <button class="mode-btn" data-mode="time">计时模式</button>
+                <button class="mode-btn" data-mode="level">闯关模式</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 设置界面 -->
+    <div class="settings-container" id="settings-container" style="display: none;">
+        <div class="settings-panel">
+            <div class="settings-close-btn" id="settings-close-btn">×</div>
+            <h2>设置 & 记录</h2>
+
+            <div class="settings-section">
+                <h3>游戏规则</h3>
+                <div class="rules-content">
+                    <p>计时模式：在60秒内挑战极限速度旋转的汉字。每局有5次跳过机会。</p>
+                    <p>闯关模式：挑战三个等级，在每个等级内，前5关默认解锁，之后需完成前一关才能解锁下一关。</p>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>速度设置</h3>
+                <div class="speed-options">
+                    <button class="speed-btn" data-speed="slow">慢速</button>
+                    <button class="speed-btn active" data-speed="medium">中速</button>
+                    <button class="speed-btn" data-speed="fast">快速</button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>我的战绩</h3>
+                <div class="records-content">
+                    <div class="record-item">
+                        <span class="record-label">最高分 (计时模式):</span>
+                        <span class="record-value" id="time-mode-record">0</span>
+                    </div>
+                    <div class="record-item">
+                        <span class="record-label">闯关进度:</span>
+                    </div>
+                    <div class="record-item level-record">
+                        <span class="record-label">牛刀小试:</span>
+                        <span class="record-value" id="easy-level-record">0/390</span>
+                    </div>
+                    <div class="record-item level-record">
+                        <span class="record-label">登峰造极:</span>
+                        <span class="record-value" id="medium-level-record">0/547</span>
+                    </div>
+                    <div class="record-item level-record">
+                        <span class="record-label">天外飞仙:</span>
+                        <span class="record-value" id="hard-level-record">0/785</span>
+                    </div>
+                </div>
+                <button id="clear-records" class="clear-btn">清空记录</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏主界面 -->
+    <div class="game-container" id="game-container" style="display: none;">
+        <div class="game-panel">
+            <div class="close-btn" id="back-btn">×</div>
+            
+            <div class="game-info">
+                <div class="time"><span class="icon">⏱</span> <span id="timer-label">时间</span>: <span id="timer">60</span></div>
+                <div class="score"><span class="icon">🎯</span> <span id="score-label">得分</span>: <span id="score">0</span></div>
+            </div>
+            
+            <div class="word-container">
+                <div id="rotating-word" class="rotating-word">物</div>
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="word-input" placeholder="输入...">
+                <button id="skip-btn" class="skip-btn">跳过<br>剩余:<span id="skip-timer">5</span></button>
+            </div>
+            
+            <!-- 错误提示 -->
+            <div id="error-message" class="error-message">
+                <span class="error-icon">❌</span>
+                <span class="error-text">答案错误！</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html> 
